@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debjoti Mallick - Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="profile">
+        <img src="images/profile.jpg" alt="Debjoti Mallick" />
+        <h1>Debjoti Mallick</h1>
+        <p class="title typing-effect">Software Developer</p>
+        <p id="dynamic-intro">Passionate about creating innovative solutions</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="about">
+        <h2>About Me</h2>
+        <p>
+          Hi! I'm a software developer with a focus on web development and a
+          passion for creating user-friendly applications. I enjoy working with
+          modern technologies and am always eager to learn and grow in my field.
+        </p>
+      </section>
+
+      <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects">
+          <div class="project-card">
+            <h3>Project Name 1</h3>
+            <p>
+              A brief description of your project. Explain what problem it
+              solves and what technologies you used.
+            </p>
+            <div class="skills">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">MongoDB</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Project Name 2</h3>
+            <p>
+              Another project description. Highlight your role and the impact of
+              the project.
+            </p>
+            <div class="skills">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Django</span>
+              <span class="skill-tag">PostgreSQL</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Project Name 3</h3>
+            <p>
+              Description of another project showcasing different skills and
+              technologies.
+            </p>
+            <div class="skills">
+              <span class="skill-tag">Vue.js</span>
+              <span class="skill-tag">Firebase</span>
+              <span class="skill-tag">Tailwind CSS</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Get in Touch</h2>
+        <p>I'm always open to discussing new projects and opportunities.</p>
+        <div class="social-links">
+          <a href="https://github.com/debjotimallick" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank"
+            >LinkedIn</a
+          >
+          <a href="mailto:your.email@example.com">Email</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Debjoti Mallick. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Dynamic intro text
+      const introTexts = [
+        "Passionate about creating innovative solutions",
+        "Transforming ideas into elegant code",
+        "Building the future, one line at a time",
+        "Solving complex problems with simple solutions",
+      ];
+      const introElement = document.getElementById("dynamic-intro");
+      let currentTextIndex = 0;
+
+      function changeIntroText() {
+        introElement.style.opacity = 0;
+        setTimeout(() => {
+          introElement.textContent = introTexts[currentTextIndex];
+          introElement.style.opacity = 1;
+          currentTextIndex = (currentTextIndex + 1) % introTexts.length;
+        }, 500);
+      }
+
+      // Change intro text every 4 seconds
+      setInterval(changeIntroText, 4000);
+
+      // Project hover effect
+      const projectCards = document.querySelectorAll(".project-card");
+      projectCards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          card.style.transform = `rotateX(${
+            -(y - rect.height / 2) / 10
+          }deg) rotateY(${(x - rect.width / 2) / 10}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "rotateX(0) rotateY(0)";
+        });
+      });
+
+      // Smooth scrolling for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
